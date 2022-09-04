@@ -18,4 +18,4 @@ jobs:
           distribution: 'adopt'
           cache: gradle
       - name: Build with Gradle
-          run: ./gradlew build --scan --no-daemon
+          run: ./gradlew build
