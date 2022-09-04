@@ -1,4 +1,4 @@
-name: Backend-desapp-api-grupo-k-022022
+name: Backend-desapp-grupo-k-022022
 on:
   push:
     branches:
@@ -17,4 +17,3 @@ jobs:
           distribution: 'adopt'
           cache: 'gradle'
       - run: ./gradlew build --no-daemon
-     
