@@ -14,5 +14,5 @@ jobs:
           cache: 'gradle'
       - run: ./gradlew build --no-daemon
       - name: Build token
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+        env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
