@@ -1,16 +1,21 @@
 package ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model;
 
-public class User {
-    private String name;
-    private String lastName;
-    private String email;
-    private String address;
-    private String password;
-    private String cvuMercadoPago;
-    private String criptoWallet;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-    public User() {
-    }
+@Entity
+@Table(name = "users")
+public class User {
+	
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
     public String getName() {
         return name;
@@ -67,4 +72,55 @@ public class User {
     public void setCriptoWallet(String criptoWallet) {
         this.criptoWallet = criptoWallet;
     }
+    
+    @Id
+    private Integer id;
+    
+    @Column
+    private String name;
+    
+    @Column
+    private String lastName;
+    
+    @Column
+    private String email;
+    
+    @Column
+    private String address;
+    
+    @Column
+    private String password;
+    
+    @Column
+    private String cvuMercadoPago;
+    
+    @Column
+    private String criptoWallet;
+    
+    
+    public User() {
+    	super();
+    }
+    
+    public User(
+    		Integer id,
+    		String name,
+		    String lastName,
+		    String email,
+		    String address, 
+		    String password,
+		    String cvuMercadoPago,
+		    String criptoWallet) {
+    	super();
+    	this.id = id;
+    	this.name = name;
+    	this.lastName = lastName;
+    	this.email = email;
+    	this.address = address;
+    	this.password = password;
+    	this.cvuMercadoPago = cvuMercadoPago;
+    	this.criptoWallet = criptoWallet;			
+    }
+    
+
 }
