@@ -1,4 +1,4 @@
-package ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.services;
+package ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.persistence;
 
 import java.util.List;
 import java.util.Optional;

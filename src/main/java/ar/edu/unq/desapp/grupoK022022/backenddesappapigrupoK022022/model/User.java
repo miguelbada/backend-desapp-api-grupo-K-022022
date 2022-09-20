@@ -72,6 +72,19 @@ public class User {
     public void setCriptoWallet(String criptoWallet) {
         this.criptoWallet = criptoWallet;
     }
+
+    public String reputation() {
+        if(this.operations == 0 || this.score == 0) {
+            return "Sin operaciones";
+        } else {
+            return Double.valueOf(this.score / this.operations).toString();
+        }
+
+    }
+
+    public Transaction transactionIntent(String criptoActive, Double cryptoactiveQuantity, Double cryptoAssetsQuote, Double amoungArgentinePesos, String username, OperationTypes transactionTypes) {
+        return new Transaction(criptoActive, cryptoactiveQuantity, cryptoAssetsQuote, amoungArgentinePesos, username, this.operations, this.reputation());
+    }
     
     @Id
     private Integer id;
@@ -96,6 +109,9 @@ public class User {
     
     @Column
     private String criptoWallet;
+
+    private Integer score;
+    private Integer operations;
     
     
     public User() {
@@ -119,8 +135,9 @@ public class User {
     	this.address = address;
     	this.password = password;
     	this.cvuMercadoPago = cvuMercadoPago;
-    	this.criptoWallet = criptoWallet;			
+    	this.criptoWallet = criptoWallet;
+        this.score = 0;
+        this.operations = 0;
     }
-    
 
 }

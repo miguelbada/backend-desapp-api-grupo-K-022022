@@ -24,6 +24,7 @@ import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.services.User
 
 @RestController
 @EnableAutoConfiguration
+@RequestMapping("/api")
 public class P2pRestService {
 
 	@Autowired
@@ -32,7 +33,7 @@ public class P2pRestService {
 	private IdGenerator idGenerator = new IdGenerator();
 	private P2pSystem p2pSystem = new P2pSystem(idGenerator);
 	
-	@GetMapping("/api/users")
+	@GetMapping("/users")
 	public ResponseEntity<?> allUsers() {
 		List<User> list = otroMetodo();
 		return ResponseEntity.ok().body(list);
@@ -43,7 +44,7 @@ public class P2pRestService {
 		return list;
 	}
 	
-	@RequestMapping(value = "/api/version", method = RequestMethod.GET)
+	@RequestMapping(value = "/version", method = RequestMethod.GET)
 	@ResponseBody
 	public ResponseEntity<?> getVersion() {
 		String version = "0.2.2";
@@ -53,7 +54,7 @@ public class P2pRestService {
 	}
 	
 
-	@RequestMapping(value = "/api/register", method = RequestMethod.POST)
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	@PostMapping
 	public void registerUser(@Valid @RequestBody UserDTO newUser) {
 		User userRegister = p2pSystem.register(newUser.getName(),

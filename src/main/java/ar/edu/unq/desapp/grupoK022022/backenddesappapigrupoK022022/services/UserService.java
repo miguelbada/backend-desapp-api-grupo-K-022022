@@ -2,6 +2,7 @@ package ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.services;
 
 import java.util.List;
 
+import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.persistence.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
