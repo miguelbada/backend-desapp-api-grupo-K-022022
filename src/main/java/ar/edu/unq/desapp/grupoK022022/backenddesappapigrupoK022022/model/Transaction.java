@@ -9,13 +9,13 @@ import java.util.UUID;
 
 @Entity
 public class Transaction {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Type(type = "uuid-char")
     private UUID id;
 
     @Basic
-    //@Column(columnDefinition = "TIMESTAMP")
     private LocalDateTime date;
 
     private String criptoActive;

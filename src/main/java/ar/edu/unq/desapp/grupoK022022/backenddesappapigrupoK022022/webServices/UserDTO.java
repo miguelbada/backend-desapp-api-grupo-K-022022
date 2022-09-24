@@ -80,7 +80,5 @@ public class UserDTO {
     	this.cvuMercadoPago = cvuMercadoPago;
     	this.criptoWallet = criptoWallet;			
     }
-    
-    
 
 }
