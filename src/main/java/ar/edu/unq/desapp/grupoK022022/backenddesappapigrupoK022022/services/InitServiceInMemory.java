@@ -1,6 +1,6 @@
 package ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.services;
 
-import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.RolType;
+import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.RoleType;
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.RoleModel;
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.UserModel;
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.persistence.RoleModelRepository;
@@ -46,7 +46,7 @@ public class InitServiceInMemory {
 				encoder.encode("sanmartinfarias"), "0000000000", "si");
 
 		RoleModel role1 = new RoleModel();
-		role1.setName(RolType.ROLE_ADMIN);
+		role1.setName(RoleType.ROLE_ADMIN);
 
 		user1.addRoleModel(role1);
 
@@ -57,7 +57,7 @@ public class InitServiceInMemory {
 				encoder.encode("juanfarias"), "1111111111", "si");
 
 		RoleModel role2 = new RoleModel();
-		role2.setName(RolType.ROLE_USER);
+		role2.setName(RoleType.ROLE_USER);
 
 		user2.addRoleModel(role2);
 

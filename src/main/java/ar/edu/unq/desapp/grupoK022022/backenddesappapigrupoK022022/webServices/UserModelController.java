@@ -3,10 +3,13 @@ package ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.webServices;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,10 +28,13 @@ public class UserModelController {
 
 	@Autowired
 	private UserModelServiceImpl userService;
+
+	@Autowired
+	private ModelMapper modelMapper;
 	
 	@GetMapping("/users")
-	public ResponseEntity<List<UserModel>> allUsers() {
-		return ResponseEntity.ok().body(userService.findAllUsers());
+	public ResponseEntity<List<UserDTO>> allUsers() {
+		return ResponseEntity.ok().body(userService.findAllUsers().stream().map(this::convertUserModelEntityToUserDTO).collect(Collectors.toList()));
 	}
 	
 	@RequestMapping(value = "/version", method = RequestMethod.GET)
@@ -41,14 +47,15 @@ public class UserModelController {
 	}
 
 	@PostMapping("/register")
-	public UserModel registerUser(@Valid @RequestBody UserModel newUser) {
-		/*User userRegister = new User(newUser.getName(),
-												newUser.getLastName(),
-											    newUser.getEmail(),
-											    newUser.getAddress(),
-											    newUser.getPassword(),
-											    newUser.getCvuMercadoPago(),
-											    newUser.getCriptoWallet());*/
-		return userService.saveUser(newUser);
+	public ResponseEntity<UserModel> registerUser(@Valid @RequestBody UserDTO newUser) {
+		return ResponseEntity.status(HttpStatus.CREATED).body(userService.saveUser(convertUserDtoToUserModelEntity(newUser)));
+	}
+
+	private UserDTO convertUserModelEntityToUserDTO(UserModel userModel) {
+		return modelMapper.map(userModel, UserDTO.class);
+	}
+
+	private UserModel convertUserDtoToUserModelEntity(UserDTO userDTO) {
+		return modelMapper.map(userDTO, UserModel.class);
 	}
 }

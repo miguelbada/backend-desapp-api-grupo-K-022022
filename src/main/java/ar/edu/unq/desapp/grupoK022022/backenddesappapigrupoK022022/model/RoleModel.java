@@ -16,7 +16,14 @@ public class RoleModel implements GrantedAuthority {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, unique = true)
-    private RolType name;
+    private RoleType name;
+
+    public RoleModel() {
+    }
+
+    public RoleModel(RoleType name) {
+        this.name = name;
+    }
 
     @Override
     public String getAuthority() {
@@ -31,11 +38,11 @@ public class RoleModel implements GrantedAuthority {
         this.id = id;
     }
 
-    public RolType getName() {
+    public RoleType getName() {
         return name;
     }
 
-    public void setName(RolType name) {
+    public void setName(RoleType name) {
         this.name = name;
     }
 }
