@@ -5,7 +5,15 @@ plugins {
 	id 'war'
 	id 'idea'
 	id 'jacoco'
-	id 'org.sonarqube' version '3.3'
+	id "org.sonarqube" version "3.4.0.2513"
+}
+
+sonarqube {
+	properties {
+		property "sonar.projectKey", "miguelbada_backend-desapp-api-grupo-K-022022"
+		property "sonar.organization", "miguelbada"
+		property "sonar.host.url", "https://sonarcloud.io"
+	}
 }
 
 compileJava.options.encoding = 'utf-8'
