@@ -1,7 +1,5 @@
 package ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.webServices;
 
-import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.RoleModel;
-import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.RoleType;
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.UserModel;
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.builder.UserModelBuilder;
 import org.junit.Test;
@@ -16,9 +14,7 @@ public class UserDTOTest {
     private final UserModelBuilder user = new UserModelBuilder();
 
     @Test
-    public void convertUserModelEntityToUserModelEntity() {
-        RoleModel roleUser = new RoleModel(RoleType.ROLE_USER);
-
+    public void convertUserModelEntityToUserDto() {
         UserModel userModel = user
                 .withName("Miguel")
                 .withLastName("Bada")
@@ -39,4 +35,27 @@ public class UserDTOTest {
         assertEquals(userDto.getCvuMercadoPago(), userModel.getCvuMercadoPago());
         assertEquals(userDto.getCriptoWallet(), userModel.getCriptoWallet());
     }
+
+    @Test
+    public void convertUserDtoToUserModelEntity() {
+        UserDTO userDto = new UserDTO();
+        userDto.setName("Juan");
+        userDto.setLastName("Perez");
+        userDto.setAddress("Esmeralda 456778");
+        userDto.setEmail("Juancin@gmail.com");
+        userDto.setPassword("456aA*");
+        userDto.setCvuMercadoPago("1234567890123456789012");
+        userDto.setCriptoWallet("12345678");
+
+        UserModel userModel = modelMapper.map(userDto, UserModel.class);
+
+        assertEquals(userModel.getName(), userDto.getName());
+        assertEquals(userModel.getLastName(), userDto.getLastName());
+        assertEquals(userModel.getEmail(), userDto.getEmail());
+        assertEquals(userModel.getAddress(), userDto.getAddress());
+        assertEquals(userModel.getPassword(), userDto.getPassword());
+        assertEquals(userModel.getCvuMercadoPago(), userDto.getCvuMercadoPago());
+        assertEquals(userModel.getCriptoWallet(), userDto.getCriptoWallet());
+    }
+
 }

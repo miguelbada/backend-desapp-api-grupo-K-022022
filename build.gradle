@@ -4,6 +4,8 @@ plugins {
 	id 'java'
 	id 'war'
 	id 'idea'
+	id 'jacoco'
+	id 'org.sonarqube' version '3.3'
 }
 
 compileJava.options.encoding = 'utf-8'
@@ -44,5 +46,11 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+jacocoTestReport {
+	reports {
+		xml.enabled true
+	}
 }
 
