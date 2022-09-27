@@ -2,7 +2,6 @@ package ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.services;
 
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.Transaction;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 public interface TransactionService {

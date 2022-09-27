@@ -15,6 +15,9 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class WebSecurityConfig {
 
+	private static final String ADMIN = "ADMIN";
+	private static final String USER = "USER";
+	
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
@@ -23,9 +26,9 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests()
                 .antMatchers("/h2-console/**").permitAll()
                 .antMatchers(HttpMethod.GET).permitAll()
-                .antMatchers(HttpMethod.POST).hasAnyRole("ADMIN", "USER")
-                .antMatchers(HttpMethod.PUT).hasRole("ADMIN")
-                .antMatchers(HttpMethod.DELETE).hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST).hasAnyRole(ADMIN, USER)
+                .antMatchers(HttpMethod.PUT).hasRole(ADMIN)
+                .antMatchers(HttpMethod.DELETE).hasRole(ADMIN)
                 .anyRequest().authenticated()
                 .and()
                 .csrf().disable();

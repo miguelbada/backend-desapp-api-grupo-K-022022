@@ -109,7 +109,6 @@ public class UserModel implements UserDetails {
         if(this.operations == 0 || this.score == 0) {
             return "Sin operaciones";
         } else {
-            //return Double.valueOf(this.score / this.operations).toString();
         	return Float.toString(Float.valueOf(this.score) / this.operations);
         }
 
@@ -149,7 +148,7 @@ public class UserModel implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return roles;
+        return getRoles();
     }
 
     @Id

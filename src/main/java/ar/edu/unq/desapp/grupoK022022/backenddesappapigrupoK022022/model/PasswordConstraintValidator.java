@@ -1,6 +1,6 @@
 package ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model;
 
-import java.io.IOException;
+
 import java.io.InputStream;
 import java.util.Arrays;
 import java.util.List;
@@ -16,13 +16,17 @@ import org.passay.PasswordData;
 import org.passay.PasswordValidator;
 import org.passay.PropertiesMessageResolver;
 import org.passay.RuleResult;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class PasswordConstraintValidator implements ConstraintValidator<ValidPassword, String> {
 
 
+	private static Logger LOG = LoggerFactory.getLogger(PasswordConstraintValidator.class);
+	
     @Override
     public void initialize(final ValidPassword arg0) {
-
+    	//inherited function is overridden
     }
 
 
@@ -36,9 +40,8 @@ public class PasswordConstraintValidator implements ConstraintValidator<ValidPas
                 .getClassLoader().getResourceAsStream("passay.properties");
         try {
 			props.load(inputStream);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e) {
+			LOG.warn("context", e);
 		}
 
         MessageResolver resolver = new PropertiesMessageResolver(props);
