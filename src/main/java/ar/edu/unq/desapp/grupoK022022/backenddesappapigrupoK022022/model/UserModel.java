@@ -109,7 +109,8 @@ public class UserModel implements UserDetails {
         if(this.operations == 0 || this.score == 0) {
             return "Sin operaciones";
         } else {
-            return Double.valueOf(this.score / this.operations).toString();
+            //return Double.valueOf(this.score / this.operations).toString();
+        	return Float.toString(this.score / this.operations);
         }
 
     }
