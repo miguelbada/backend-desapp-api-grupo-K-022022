@@ -22,7 +22,7 @@ import org.slf4j.LoggerFactory;
 public class PasswordConstraintValidator implements ConstraintValidator<ValidPassword, String> {
 
 
-	private static Logger LOG = LoggerFactory.getLogger(PasswordConstraintValidator.class);
+	private static Logger log = LoggerFactory.getLogger(PasswordConstraintValidator.class);
 	
     @Override
     public void initialize(final ValidPassword arg0) {
@@ -41,7 +41,7 @@ public class PasswordConstraintValidator implements ConstraintValidator<ValidPas
         try {
 			props.load(inputStream);
 		} catch (Exception e) {
-			LOG.warn("context", e);
+			log.warn("context", e);
 		}
 
         MessageResolver resolver = new PropertiesMessageResolver(props);
