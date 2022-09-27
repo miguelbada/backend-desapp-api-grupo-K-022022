@@ -110,7 +110,7 @@ public class UserModel implements UserDetails {
             return "Sin operaciones";
         } else {
             //return Double.valueOf(this.score / this.operations).toString();
-        	return Float.toString(this.score / this.operations);
+        	return Float.toString(Float.valueOf(this.score) / this.operations);
         }
 
     }
