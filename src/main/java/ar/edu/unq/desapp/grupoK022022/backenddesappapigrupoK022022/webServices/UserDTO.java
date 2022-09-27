@@ -27,6 +27,10 @@ public class UserDTO {
         return email;
     }
     
+    public String getUsername() {
+        return username;
+    }
+    
     public String getLastName() {
         return lastName;
     }
@@ -43,6 +47,10 @@ public class UserDTO {
         this.lastName = lastName;
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    
     public void setEmail(String email) {
         this.email = email;
     }
@@ -70,6 +78,9 @@ public class UserDTO {
     
     @Size(min = 3, max = 30, message = "Invalid length for last name")
     private String lastName;
+    
+    @Size(min = 3, max = 30, message = "Invalid length for user name")
+    private String username;
 
     @Email 
     private String email;

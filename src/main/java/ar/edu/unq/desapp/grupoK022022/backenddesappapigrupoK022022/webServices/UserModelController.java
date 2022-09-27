@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -37,9 +36,9 @@ public class UserModelController {
 		return ResponseEntity.ok().body(userService.findAllUsers().stream().map(this::convertUserModelEntityToUserDTO).collect(Collectors.toList()));
 	}
 	
-	@RequestMapping(value = "/version", method = RequestMethod.GET)
+	@GetMapping(path = "/version")
 	@ResponseBody
-	public ResponseEntity<?> getVersion() {
+	public ResponseEntity<Map<String, String>> getVersion() {
 		String version = "0.2.2";
 		Map<String, String> resultado = new HashMap<String, String>();
 		resultado.put("version", version);
