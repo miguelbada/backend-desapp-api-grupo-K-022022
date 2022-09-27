@@ -1,0 +1,15 @@
+---------------------------------------------------------------------
+Backend Desarrollo de Aplicaciones API Grupo K 02-2022
+1.0
+---------------------------------------------------------------------
+NEW FEATURES:
+* Funcionalidad para registrar un usuario
+* Funcionalidad de rol de administrador
+* Funcionalidad de rol de usuario 
+
+NOTES:
+* El usuario aun no puede iniciar sesion
+
+KNOWN ISSUES:
+* Aun no se manejan datos exactos en las transacciones
+* Los criptoactivos aun se manejan como cadenas de texto
