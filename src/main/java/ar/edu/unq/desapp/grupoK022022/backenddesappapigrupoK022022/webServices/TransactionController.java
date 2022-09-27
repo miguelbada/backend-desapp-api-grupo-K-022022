@@ -17,7 +17,14 @@ public class TransactionController {
     private TransactionService service;
 
     @PostMapping("/save")
-    public ResponseEntity<Transaction> saveTransaction(@RequestBody Transaction transaction) {
+    public ResponseEntity<Transaction> saveTransaction(@RequestBody TransactionDTO newTransaction) {
+    	Transaction transaction = new Transaction(newTransaction.getCriptoActive(),
+    											  newTransaction.getCryptoactiveQuantity(),
+    											  newTransaction.getCryptoAssetsQuote(),
+    											  newTransaction.getAmoungArgentinePesos(),
+    											  newTransaction.getUsername(),
+    											  newTransaction.getTrades(),
+    											  newTransaction.getReputation());
         return ResponseEntity.status(HttpStatus.CREATED).body(service.saveTransaction(transaction));
     }
 
