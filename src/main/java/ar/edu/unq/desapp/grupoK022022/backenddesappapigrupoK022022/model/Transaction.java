@@ -18,10 +18,11 @@ public class Transaction {
     @Basic
     private LocalDateTime date;
 
+    private OperationType type;
     private String criptoActive;
     private Double cryptoactiveQuantity;
     private Double cryptoAssetsQuote;
-    private Double amoungArgentinePesos;
+    private Double argentinePesos;
     private String username;
     private Integer trades;
     private String reputation;
@@ -30,15 +31,14 @@ public class Transaction {
         this.date = getCurrentDate();
     }
 
-    public Transaction(String criptoActive, Double cryptoactiveQuantity, Double cryptoAssetsQuote, Double amoungArgentinePesos, String username, Integer trades, String reputation) {
+    public Transaction(OperationType type, String criptoActive, Double cryptoactiveQuantity, Double cryptoAssetsQuote, Double argentinePesos, String username) {
         this.date = getCurrentDate();
+        this.type = type;
         this.criptoActive = criptoActive;
         this.cryptoactiveQuantity = cryptoactiveQuantity;
         this.cryptoAssetsQuote = cryptoAssetsQuote;
-        this.amoungArgentinePesos = amoungArgentinePesos;
+        this.argentinePesos = argentinePesos;
         this.username = username;
-        this.trades = trades;
-        this.reputation = reputation;
     }
 
     public UUID getId() {
@@ -73,12 +73,12 @@ public class Transaction {
         this.cryptoactiveQuantity = cryptoactiveQuantity;
     }
 
-    public Double getAmoungArgentinePesos() {
-        return amoungArgentinePesos;
+    public Double getArgentinePesos() {
+        return argentinePesos;
     }
 
-    public void setAmoungArgentinePesos(Double amoungArgentinePesos) {
-        this.amoungArgentinePesos = amoungArgentinePesos;
+    public void setArgentinePesos(Double amoungArgentinePesos) {
+        this.argentinePesos = amoungArgentinePesos;
     }
 
     public String getUsername() {
@@ -111,6 +111,14 @@ public class Transaction {
 
     public void setReputation(String reputation) {
         this.reputation = reputation;
+    }
+
+    public OperationType getType() {
+        return type;
+    }
+
+    public void setType(OperationType type) {
+        this.type = type;
     }
 
     private LocalDateTime getCurrentDate() {

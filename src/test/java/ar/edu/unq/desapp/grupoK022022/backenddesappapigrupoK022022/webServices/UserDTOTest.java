@@ -4,7 +4,6 @@ import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.UserMod
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.builder.UserModelBuilder;
 import org.junit.Test;
 import org.modelmapper.ModelMapper;
-
 import static org.junit.Assert.assertEquals;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -18,6 +17,7 @@ public class UserDTOTest {
         UserModel userModel = user
                 .withName("Miguel")
                 .withLastName("Bada")
+                .withUsername("miguelbada")
                 .withEmail("miguel@hotmail.com")
                 .withAddress("Monroe 123456")
                 .withPassword("123Aa*")
@@ -29,6 +29,7 @@ public class UserDTOTest {
 
         assertEquals(userDto.getName(), userModel.getName());
         assertEquals(userDto.getLastName(), userModel.getLastName());
+        assertEquals(userDto.getUsername(), userModel.getUsername());
         assertEquals(userDto.getEmail(), userModel.getEmail());
         assertEquals(userDto.getAddress(), userModel.getAddress());
         assertEquals(userDto.getPassword(), userModel.getPassword());
@@ -41,6 +42,7 @@ public class UserDTOTest {
         UserDTO userDto = new UserDTO();
         userDto.setName("Juan");
         userDto.setLastName("Perez");
+        userDto.setUsername("juancin");
         userDto.setAddress("Esmeralda 456778");
         userDto.setEmail("Juancin@gmail.com");
         userDto.setPassword("456aA*");
@@ -51,6 +53,7 @@ public class UserDTOTest {
 
         assertEquals(userModel.getName(), userDto.getName());
         assertEquals(userModel.getLastName(), userDto.getLastName());
+        assertEquals(userModel.getUsername(), userDto.getUsername());
         assertEquals(userModel.getEmail(), userDto.getEmail());
         assertEquals(userModel.getAddress(), userDto.getAddress());
         assertEquals(userModel.getPassword(), userDto.getPassword());

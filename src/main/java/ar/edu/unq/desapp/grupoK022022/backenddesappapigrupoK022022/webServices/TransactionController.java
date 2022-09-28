@@ -1,7 +1,10 @@
 package ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.webServices;
 
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.Transaction;
+import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.UserModel;
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.services.TransactionService;
+import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.services.UserModelService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,15 +19,16 @@ public class TransactionController {
     @Autowired
     private TransactionService service;
 
+    @Autowired
+    private UserModelService userService;
+
+    @Autowired
+    private ModelMapper mapper;
+
     @PostMapping("/save")
     public ResponseEntity<Transaction> saveTransaction(@RequestBody TransactionDTO newTransaction) {
-    	Transaction transaction = new Transaction(newTransaction.getCriptoActive(),
-    											  newTransaction.getCryptoactiveQuantity(),
-    											  newTransaction.getCryptoAssetsQuote(),
-    											  newTransaction.getAmoungArgentinePesos(),
-    											  newTransaction.getUsername(),
-    											  newTransaction.getTrades(),
-    											  newTransaction.getReputation());
+
+        Transaction transaction = convertTransactionDtoToTransactionEntity(newTransaction);
         return ResponseEntity.status(HttpStatus.CREATED).body(service.saveTransaction(transaction));
     }
 
@@ -41,5 +45,13 @@ public class TransactionController {
     @DeleteMapping("/delete/{id}")
     public void deleteTransactionById(@PathVariable UUID id) {
         service.deleteTransactionById(id);
+    }
+
+    private TransactionDTO convertTransactionEntityToTransactionDTO(Transaction transaction) {
+        return mapper.map(transaction, TransactionDTO.class);
+    }
+
+    private Transaction convertTransactionDtoToTransactionEntity(TransactionDTO transactionDTO) {
+        return mapper.map(transactionDTO, Transaction.class);
     }
 }

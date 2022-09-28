@@ -1,6 +1,16 @@
 package ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.webServices;
 
+import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.OperationType;
+
 public class TransactionDTO {
+
+	public OperationType getType() {
+		return type;
+	}
+
+	public void setType(OperationType type) {
+		this.type = type;
+	}
 
 	public String getCriptoActive() {
 		return criptoActive;
@@ -26,12 +36,12 @@ public class TransactionDTO {
 		this.cryptoAssetsQuote = cryptoAssetsQuote;
 	}
 
-	public Double getAmoungArgentinePesos() {
-		return amoungArgentinePesos;
+	public Double getArgentinePesos() {
+		return argentinePesos;
 	}
 
-	public void setAmoungArgentinePesos(Double amoungArgentinePesos) {
-		this.amoungArgentinePesos = amoungArgentinePesos;
+	public void setArgentinePesos(Double argentinePesos) {
+		this.argentinePesos = argentinePesos;
 	}
 
 	public String getUsername() {
@@ -58,13 +68,15 @@ public class TransactionDTO {
 		this.reputation = reputation;
 	}
 
+	private OperationType type;
+
 	private String criptoActive;
 	
     private Double cryptoactiveQuantity;
     
     private Double cryptoAssetsQuote;
     
-    private Double amoungArgentinePesos;
+    private Double argentinePesos;
     
     private String username;
     
