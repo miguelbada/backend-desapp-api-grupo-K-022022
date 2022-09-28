@@ -1,7 +1,6 @@
 package ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.webServices;
 
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.Transaction;
-import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.UserModel;
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.services.TransactionService;
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.services.UserModelService;
 import org.modelmapper.ModelMapper;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/transaction")
@@ -33,8 +33,14 @@ public class TransactionController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<Transaction>> getAllTransactions() {
-        return ResponseEntity.ok().body(service.getAllTransaction());
+    public ResponseEntity<List<TransactionDTO>> getAllTransactions() {
+        List<TransactionDTO> transactionsDTOs = service
+                .getAllTransaction()
+                .stream()
+                .map(this::convertTransactionEntityToTransactionDTO)
+                .toList();
+
+        return ResponseEntity.ok().body(transactionsDTOs);
     }
 
     @GetMapping("/{id}")
