@@ -3,7 +3,6 @@ package ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.builde
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.OperationType;
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.Transaction;
 
-import java.time.LocalDateTime;
 
 public class TransactionBuilder {
     public static TransactionBuilder aTransactionBuilder() {
