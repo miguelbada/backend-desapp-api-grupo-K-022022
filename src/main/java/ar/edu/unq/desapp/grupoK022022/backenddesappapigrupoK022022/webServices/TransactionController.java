@@ -27,14 +27,13 @@ public class TransactionController {
     
     @Operation(summary = "Insert the information of a new transaction to the database")
     @ApiResponses(value = { 
-    		  @ApiResponse(responseCode = "200", description = " (OK) A new transaction was saved"),
+    		  @ApiResponse(responseCode = "201", description = " (Created) A new transaction was saved"),
     		  @ApiResponse(responseCode = "400", description = " (Bad Request) The data sent is incorrect or there is required data not sent"),
     		  @ApiResponse(responseCode = "401", description = " (Unauthorized) There is no authorization to call the service"),
     		  @ApiResponse(responseCode = "404", description = " (Not Found) Information not found"),
     		  @ApiResponse(responseCode = "500", description = " (Server Error)")})
     @PostMapping("/save")
     public ResponseEntity<Transaction> saveTransaction(@RequestBody TransactionDTO newTransaction) {
-
         Transaction transaction = convertTransactionDtoToTransactionEntity(newTransaction);
         return ResponseEntity.status(HttpStatus.CREATED).body(service.saveTransaction(transaction));
     }
@@ -42,7 +41,7 @@ public class TransactionController {
     
     @Operation(summary = "List of all the transactions of the application")
     @ApiResponses(value = { 
-			  @ApiResponse(responseCode = "200", description = " (OK) Found the all transctions"),
+			  @ApiResponse(responseCode = "200", description = " (OK) Found the all transactions"),
 			  @ApiResponse(responseCode = "401", description = " (Unauthorized) There is no authorization to call the service"),
 	  		  @ApiResponse(responseCode = "404", description = " (Not Found) Information not found"),
 	  		  @ApiResponse(responseCode = "500", description = " (Server Error)")})
@@ -72,7 +71,7 @@ public class TransactionController {
     
     @Operation(summary = "Delete transaction information from the database")
     @ApiResponses(value = { 
-			  @ApiResponse(responseCode = "200", description = " (OK) Delete the specific transaction"),
+			  @ApiResponse(responseCode = "204", description = " (No Content) Delete the specific transaction"),
 			  @ApiResponse(responseCode = "401", description = " (Unauthorized) There is no authorization to call the service"),
 	  		  @ApiResponse(responseCode = "404", description = " (Not Found) Information not found"),
 	  		  @ApiResponse(responseCode = "500", description = " (Server Error)")})
