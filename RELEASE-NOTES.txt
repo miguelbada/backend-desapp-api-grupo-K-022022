@@ -13,3 +13,15 @@ NOTES:
 KNOWN ISSUES:
 * Aun no se manejan datos exactos en las transacciones
 * Los criptoactivos aun se manejan como cadenas de texto
+
+---------------------------------------------------------------------
+Backend Desarrollo de Aplicaciones API Grupo K 02-2022
+1.1
+---------------------------------------------------------------------
+NEW FEATURES:
+* Funcionalidad para ver la cotizacion de los criptoactivos
+* Documentacion de endpoints
+* Funcionalidad para realizar una transaccion
+
+KNOWN ISSUES:
+* Aun no se realizan intenciones de compra-venta
