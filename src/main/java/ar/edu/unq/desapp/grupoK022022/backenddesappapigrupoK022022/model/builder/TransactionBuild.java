@@ -4,9 +4,9 @@ import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.Operati
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.Transaction;
 
 
-public class TransactionBuilder {
-    public static TransactionBuilder aTransactionBuilder() {
-        return new TransactionBuilder();
+public class TransactionBuild {
+    public static TransactionBuild aTransactionBuilder() {
+        return new TransactionBuild();
     }
 
     private OperationType type;
@@ -20,32 +20,32 @@ public class TransactionBuilder {
         return new Transaction(type, criptoActive, cryptoactiveQuantity, cryptoAssetsQuote, argentinePesos, username);
     }
 
-    public TransactionBuilder withType(final OperationType aType) {
+    public TransactionBuild withType(final OperationType aType) {
         this.type = aType;
         return this;
     }
 
-    public TransactionBuilder withCriptoActive(final String aCriptoActive) {
+    public TransactionBuild withCriptoActive(final String aCriptoActive) {
         this.criptoActive = aCriptoActive;
         return this;
     }
 
-    public TransactionBuilder withCriptoActiveQuantity(final Double aCriptoActiveQuantity) {
+    public TransactionBuild withCriptoActiveQuantity(final Double aCriptoActiveQuantity) {
         this.cryptoactiveQuantity = aCriptoActiveQuantity;
         return this;
     }
 
-    public TransactionBuilder withCryptoAssetsQuote(final Double aCryptoAssetsQuote) {
+    public TransactionBuild withCryptoAssetsQuote(final Double aCryptoAssetsQuote) {
         this.cryptoAssetsQuote = aCryptoAssetsQuote;
         return this;
     }
 
-    public TransactionBuilder withArgentinePesos(final Double anArgentinePesos) {
+    public TransactionBuild withArgentinePesos(final Double anArgentinePesos) {
         this.argentinePesos = anArgentinePesos;
         return this;
     }
 
-    public TransactionBuilder withUsername(final String anUsername) {
+    public TransactionBuild withUsername(final String anUsername) {
         this.username = anUsername;
         return this;
     }

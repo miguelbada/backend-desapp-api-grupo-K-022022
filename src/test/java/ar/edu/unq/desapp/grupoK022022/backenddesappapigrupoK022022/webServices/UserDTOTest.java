@@ -1,7 +1,7 @@
 package ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.webServices;
 
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.UserModel;
-import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.builder.UserModelBuilder;
+import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.builder.UserModelBuild;
 import org.junit.Test;
 import org.modelmapper.ModelMapper;
 import static org.junit.Assert.assertEquals;
@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class UserDTOTest {
     private final ModelMapper modelMapper = new ModelMapper();
-    private final UserModelBuilder user = new UserModelBuilder();
+    private final UserModelBuild user = new UserModelBuild();
 
     @Test
     public void convertUserModelEntityToUserDto() {

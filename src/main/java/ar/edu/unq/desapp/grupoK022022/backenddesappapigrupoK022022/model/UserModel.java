@@ -115,7 +115,11 @@ public class UserModel implements UserDetails {
     }
 
     public Transaction transactionIntent(OperationType type, String criptoActive, Double cryptoactiveQuantity, Double cryptoAssetsQuote, Double amoungArgentinePesos, String username) {
-        return new Transaction(type, criptoActive, cryptoactiveQuantity, cryptoAssetsQuote, amoungArgentinePesos, username);
+        Transaction transaction = new Transaction(type, criptoActive, cryptoactiveQuantity, cryptoAssetsQuote, amoungArgentinePesos, this.username);
+        transaction.setTrades(this.getOperations());
+        transaction.setReputation(this.reputation());
+
+        return transaction;
     }
 
     public Integer getScore() {

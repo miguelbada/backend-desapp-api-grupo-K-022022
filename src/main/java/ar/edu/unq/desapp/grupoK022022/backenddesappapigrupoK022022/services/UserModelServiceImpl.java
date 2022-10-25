@@ -6,6 +6,7 @@ import java.util.UUID;
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.exception.UserNotFoundException;
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.persistence.UserModelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.UserModel;
@@ -16,6 +17,9 @@ public class UserModelServiceImpl implements UserModelService {
 	@Autowired
 	UserModelRepository repository;
 
+	@Autowired
+	private PasswordEncoder encoder;
+
 
 	@Override
 	public List<UserModel> findAllUsers() {
@@ -24,6 +28,8 @@ public class UserModelServiceImpl implements UserModelService {
 
 	@Override
 	public UserModel saveUser(UserModel user) {
+		user.setPassword(encoder.encode(user.getPassword()));
+
 		return repository.save(user);
 	}
 

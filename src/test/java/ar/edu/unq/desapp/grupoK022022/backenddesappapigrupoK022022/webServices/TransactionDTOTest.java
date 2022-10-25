@@ -2,7 +2,7 @@ package ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.webServices;
 
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.OperationType;
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.Transaction;
-import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.builder.TransactionBuilder;
+import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.builder.TransactionBuild;
 import org.junit.Test;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 
 @SpringBootTest
 public class TransactionDTOTest {
-    private final TransactionBuilder transactionBuilder = new TransactionBuilder();
+    private final TransactionBuild transactionBuilder = new TransactionBuild();
     private final ModelMapper mapper = new ModelMapper();
 
     @Test
