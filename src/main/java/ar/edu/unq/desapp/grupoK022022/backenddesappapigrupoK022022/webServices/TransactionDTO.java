@@ -2,7 +2,16 @@ package ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.webServices;
 
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.OperationType;
 
+import java.util.UUID;
+
 public class TransactionDTO {
+	public UUID getId() {
+		return id;
+	}
+
+	public void setId(UUID id) {
+		this.id = id;
+	}
 
 	public OperationType getType() {
 		return type;
@@ -67,6 +76,8 @@ public class TransactionDTO {
 	public void setReputation(String reputation) {
 		this.reputation = reputation;
 	}
+
+	private UUID id;
 
 	private OperationType type;
 
