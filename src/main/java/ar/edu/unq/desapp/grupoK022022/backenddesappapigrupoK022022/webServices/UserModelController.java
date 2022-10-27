@@ -32,11 +32,6 @@ public class UserModelController {
 	private ModelMapper modelMapper;
 	
 	@Operation(summary = "List of all users of the application")
-	@ApiResponses(value = { 
-			  @ApiResponse(responseCode = "200", description = " (OK) Found the all users"),
-			  @ApiResponse(responseCode = "401", description = " (Unauthorized) There is no authorization to call the service"),
-	  		  @ApiResponse(responseCode = "404", description = " (Not Found) Information not found"),
-	  		  @ApiResponse(responseCode = "500", description = " (Server Error)")})
 	@GetMapping("/users")
 	public ResponseEntity<List<UserDTO>> allUsers() {
 		return ResponseEntity.ok().body(userService.findAllUsers().stream().map(this::convertUserModelEntityToUserDTO).collect(Collectors.toList()));
@@ -44,12 +39,6 @@ public class UserModelController {
 	
 
 	@Operation(summary = "Insert the information of a new user to the database")
-	@ApiResponses(value = { 
-  		  @ApiResponse(responseCode = "200", description = " (OK) A new user has been registered"),
-  		  @ApiResponse(responseCode = "400", description = " (Bad Request) The data sent is incorrect or there is required data not sent"),
-  		  @ApiResponse(responseCode = "401", description = " (Unauthorized) There is no authorization to call the service"),
-  		  @ApiResponse(responseCode = "404", description = " (Not Found) Information not found"),
-  		  @ApiResponse(responseCode = "500", description = " (Server Error)")})
 	@PostMapping("/register")
 	public ResponseEntity<UserModel> registerUser(@Valid @RequestBody UserDTO newUser) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(userService.saveUser(convertUserDtoToUserModelEntity(newUser)));
