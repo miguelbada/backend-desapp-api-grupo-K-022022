@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT $JAVA_OPTS -jar build/libs/ar.edu.unq.desapp.grupo-K-022022-0.0.1-SNAPSHOT.war
+web: java $JAVA_OPTS -Dserver.port=$PORT -jar build/libs/*.jar
