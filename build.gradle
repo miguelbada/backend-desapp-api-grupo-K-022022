@@ -8,10 +8,6 @@ plugins {
 	id "org.sonarqube" version "3.4.0.2513"
 }
 
-jar {
-	enabled = false
-}
-
 sonarqube {
 	properties {
 		property "sonar.projectKey", "miguelbada_backend-desapp-api-grupo-K-022022"
@@ -23,7 +19,7 @@ sonarqube {
 compileJava.options.encoding = 'utf-8'
 compileTestJava.options.encoding = 'utf-8'
 
-group = 'ar.edu.unq.desapp.grupo-K-022022'
+group = 'backend-desapp-api-grupo-K-022022'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = JavaVersion.VERSION_17
 
