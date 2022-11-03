@@ -6,6 +6,8 @@ import java.util.UUID;
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.exception.EmailAlreadyUsedException;
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.exception.UserNotFoundException;
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.persistence.UserModelRepository;
+import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.services.security.JwtProvider;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -20,6 +22,9 @@ public class UserModelServiceImpl implements UserModelService {
 
 	@Autowired
 	private PasswordEncoder encoder;
+	
+	@Autowired 
+	JwtProvider jwtProvider;
 
 
 	@Override
@@ -56,6 +61,7 @@ public class UserModelServiceImpl implements UserModelService {
 	public UserModel getUserByUsername(String username) {
 		return repository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User not found by username: " + username));
 	}
+	
 	
 	private Boolean emailIsUsed(String email) {
 		UserModel user = getUserByEmail(email);
