@@ -3,6 +3,8 @@ package ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.webServices;
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.OperationType;
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.Transaction;
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.builder.TransactionBuild;
+import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.webServices.dto.TransactionDTO;
+
 import org.junit.Test;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.test.context.SpringBootTest;

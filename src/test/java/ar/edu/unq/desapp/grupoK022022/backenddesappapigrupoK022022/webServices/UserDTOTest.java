@@ -2,6 +2,8 @@ package ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.webServices;
 
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.UserModel;
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.builder.UserModelBuild;
+import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.webServices.dto.UserDTO;
+
 import org.junit.Test;
 import org.modelmapper.ModelMapper;
 import static org.junit.Assert.assertEquals;
