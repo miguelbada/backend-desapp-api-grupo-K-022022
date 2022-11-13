@@ -10,6 +10,8 @@ import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.UserMod
 @Repository
 public interface UserModelRepository extends JpaRepository<UserModel, UUID> {
     Optional<UserModel> findByUsername(String username);
+
+	UserModel findByEmail(String email);
 }
 
 

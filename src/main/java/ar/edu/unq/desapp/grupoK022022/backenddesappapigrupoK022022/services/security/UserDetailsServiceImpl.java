@@ -3,6 +3,7 @@ package ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.services.sec
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.UserModel;
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.services.UserModelService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class UserDetailsServiceImpl implements UserDetailsService {
 
+	@Lazy
     @Autowired
     private UserModelService service;
 

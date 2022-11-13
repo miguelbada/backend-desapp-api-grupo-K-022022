@@ -1,4 +1,4 @@
-package ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.webServices;
+package ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.webServices.dto;
 
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.OperationType;
 

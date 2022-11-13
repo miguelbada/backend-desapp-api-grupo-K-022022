@@ -11,4 +11,5 @@ public interface UserModelService {
     UserModel getUserById(UUID id);
     void deleteUserById(UUID id);
     UserModel getUserByUsername(String username);
+	UserModel getUserByEmail(String email);
 }

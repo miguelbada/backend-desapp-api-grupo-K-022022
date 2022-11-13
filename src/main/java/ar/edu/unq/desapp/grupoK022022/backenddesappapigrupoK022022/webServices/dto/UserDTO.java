@@ -1,4 +1,4 @@
-package ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.webServices;
+package ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.webServices.dto;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
@@ -82,14 +82,14 @@ public class UserDTO {
     @Size(min = 3, max = 30, message = "Invalid length for user name")
     private String username;
 
-    @Email 
+    @Email(message = "The email entered is invalid") 
     private String email;
     
     @Size(min = 10, max = 30, message = "Invalid length for address")
     private String address;
     
-    @Size(min = 6, message = "The password is less than 6 characters")
     @ValidPassword
+    @Size(min = 6, message = "The password is less than 6 characters")
     private String password;
     
     @Size(min = 22, max = 22, message = "Invalid length for CVU")
