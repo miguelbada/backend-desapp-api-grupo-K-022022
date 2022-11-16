@@ -54,6 +54,12 @@ dependencies {
 	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
 }
 
+
+test {
+	useJUnitPlatform()
+	
+}
+
 tasks.named('test') {
 	useJUnitPlatform()
 }
