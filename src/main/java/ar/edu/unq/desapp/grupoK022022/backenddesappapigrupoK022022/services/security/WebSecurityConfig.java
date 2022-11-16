@@ -47,6 +47,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // Our public endpoints
 		.antMatchers("/h2-console/**").permitAll()
 		.antMatchers(HttpMethod.GET).permitAll()
+		.antMatchers(HttpMethod.DELETE).permitAll()
 		.antMatchers(HttpMethod.POST, "/api/login").permitAll()
         .antMatchers(HttpMethod.POST, "/api/register").permitAll()
         // Our private endpoints
