@@ -67,5 +67,11 @@ public class UserModelServiceImpl implements UserModelService {
 		UserModel user = getUserByEmail(email);
 		return user != null;
 	}
+
+	public void deleteUserByUsername(String username) {
+		repository.deleteByUsername(username);
+		
+	}
+	 
 }
 
