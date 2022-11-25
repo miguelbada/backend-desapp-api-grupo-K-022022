@@ -30,6 +30,9 @@ public class InitServiceInMemory {
 
 	@Autowired
 	private TransactionService transactionService;
+
+	@Autowired
+	private CryptoService cryptoService;
 	
 
 	@PostConstruct
@@ -51,6 +54,8 @@ public class InitServiceInMemory {
 
 		List<Transaction> transactions = new DataLoader().getTransactions();
 		transactions.forEach(transaction -> transactionService.saveTransaction(transaction));
+
+		cryptoService.initialiceCryptos();
 	}
 
 }

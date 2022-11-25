@@ -10,8 +10,8 @@ public class DataLoader {
     private UserModel user1;
     private UserModel user2;
     private RoleModel role1;
-    private RoleModel role2 = new RoleModel();
-    //private List<Transaction> transactions;
+    private RoleModel role2;
+
 
     public DataLoader() {
         this.role1 = new RoleModel();
