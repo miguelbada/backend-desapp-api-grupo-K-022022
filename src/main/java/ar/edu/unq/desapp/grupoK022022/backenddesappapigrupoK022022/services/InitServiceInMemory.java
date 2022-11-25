@@ -1,16 +1,16 @@
 package ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.services;
 
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.DataLoader;
-import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.Transaction;
+import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.Offer;
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.persistence.RoleModelRepository;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
-import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -29,7 +29,7 @@ public class InitServiceInMemory {
 	private RoleModelRepository roleRepository;
 
 	@Autowired
-	private TransactionService transactionService;
+	private OfferService offerService;
 
 	@Autowired
 	private CryptoService cryptoService;
@@ -52,8 +52,8 @@ public class InitServiceInMemory {
 		userService.saveUser(dataLoader.getUser1());
 		userService.saveUser(dataLoader.getUser2());
 
-		List<Transaction> transactions = new DataLoader().getTransactions();
-		transactions.forEach(transaction -> transactionService.saveTransaction(transaction));
+		List<Offer> offers = new DataLoader().getOffers();
+		offers.forEach(offer -> offerService.saveOffer(offer));
 
 		cryptoService.initialiceCryptos();
 	}

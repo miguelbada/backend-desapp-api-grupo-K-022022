@@ -42,7 +42,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   protected void configure(HttpSecurity http) throws Exception {
     http
         //.httpBasic(withDefaults())  // (1)
-        .csrf().disable() // (2)
+    	.csrf().disable()// (2)
         .authorizeRequests()
         // Our public endpoints
 		.antMatchers("/h2-console/**").permitAll()
@@ -56,6 +56,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .and().cors()
         .and()
         .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+    http.headers().frameOptions().disable();
 
     http.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
   }
