@@ -30,6 +30,9 @@ public class InitServiceInMemory {
 
 	@Autowired
 	private OfferService offerService;
+
+	@Autowired
+	private CryptoService cryptoService;
 	
 
 	@PostConstruct
@@ -51,6 +54,8 @@ public class InitServiceInMemory {
 
 		List<Offer> offers = new DataLoader().getOffers();
 		offers.forEach(offer -> offerService.saveOffer(offer));
+
+		cryptoService.initialiceCryptos();
 	}
 
 }

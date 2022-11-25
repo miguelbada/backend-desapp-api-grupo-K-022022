@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.Offer;
+import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.OfferState;
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.exception.UserNotFoundException;
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.persistence.OfferRepository;
 
@@ -41,7 +42,7 @@ public class OfferServiceImpl implements OfferService{
     @Override
     public List<Offer> getAllOfferByUsername(String username) {
     	if (username != null) {
-    		return repository.search(username);
+    		return repository.search(username, OfferState.OPEN);
     	}
         return new ArrayList<Offer>();
     }
