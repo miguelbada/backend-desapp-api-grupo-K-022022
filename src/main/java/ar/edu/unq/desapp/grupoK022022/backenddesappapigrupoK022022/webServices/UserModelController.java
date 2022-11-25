@@ -11,11 +11,13 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +33,7 @@ import io.swagger.v3.oas.annotations.Operation;
 
 
 @RestController
+@Transactional
 @RequestMapping("/api")
 public class UserModelController {
 	
@@ -66,8 +69,11 @@ public class UserModelController {
 	
 	@Operation(summary = "Start a user session")
 	@PostMapping("login")
-    public ResponseEntity<UserDTO> login(@RequestBody @Valid UserLoginDTO request) {
-        try {
+    public ResponseEntity<UserDTO> login(@Valid @RequestBody UserLoginDTO request) {
+       // try {
+        	
+        	UserModel user = userService.getUserByUsername(request.getUserName());
+        	
             authenticationManager
                 .authenticate(
                     new UsernamePasswordAuthenticationToken(
@@ -82,18 +88,20 @@ public class UserModelController {
 
             TokenDTO tokenInfo = new TokenDTO(jwt);
             
-            UserModel user = userService.getUserByUsername(userDetails.getUsername());
-            
             return ResponseEntity.ok()
                 .header(
                     HttpHeaders.AUTHORIZATION,
                     tokenInfo.getJwtToken()
                 )
                 .body(modelMapper.map(user, UserDTO.class));
-        } catch (BadCredentialsException ex) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
     }
+	
+	@Operation(summary = "Delete user information from the database")
+    @DeleteMapping("/delete/{username}")
+    public void deleteUserByUserName(@PathVariable String username) {
+        userService.deleteUserByUsername(username);
+    }
+
 
 	
 	private UserDTO convertUserModelEntityToUserDTO(UserModel userModel) {

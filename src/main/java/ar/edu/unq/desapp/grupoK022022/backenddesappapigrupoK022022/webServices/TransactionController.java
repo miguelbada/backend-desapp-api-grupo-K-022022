@@ -4,8 +4,6 @@ import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.Transac
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.services.TransactionService;
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.webServices.dto.TransactionDTO;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
