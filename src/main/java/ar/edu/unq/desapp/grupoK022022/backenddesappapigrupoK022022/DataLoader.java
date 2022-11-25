@@ -11,7 +11,7 @@ public class DataLoader {
     private UserModel user2;
     private RoleModel role1;
     private RoleModel role2 = new RoleModel();
-    //private List<Transaction> transactions;
+    //private List<offer> offers;
 
     public DataLoader() {
         this.role1 = new RoleModel();
@@ -47,15 +47,15 @@ public class DataLoader {
         return user2;
     }
 
-    public List<Transaction> getTransactions() {
-        Transaction transaction1 = user1.transactionIntent(OperationType.SALE, "ETHBTC", 4.0, 0.06975300, 209259.0, "miguel");
-        Transaction transaction2 = user2.transactionIntent(OperationType.SALE, "BTCPLN", 1.0, 96897.00000000, 29069100.00, "Martin");
-        Transaction transaction3 = user1.transactionIntent(OperationType.SALE, "ETHPLN", 1.0, 6792.00000000, 2037600.00, "Enzo");
-        Transaction transaction4 = user2.transactionIntent(OperationType.PURCHASE, "APTBUSD", 5.0, 9.49470000, 27000.00, "Jose");
-        Transaction transaction5 = user1.transactionIntent(OperationType.PURCHASE, "POLYXUSDT", 10.0, 0.18190000, 540.00, "Ernesto");
-        Transaction transaction6 = user2.transactionIntent(OperationType.PURCHASE, "APTBTC", 25.0, 0.00049019, 3.68, "Juan");
+    public List<Offer> getOffers() {
+        Offer offer1 = user1.createOffer("ETHBTC", 4.0, 0.06975300, 209259.0, "miguel", OperationType.SALE);
+        Offer offer2 = user2.createOffer("BTCPLN", 1.0, 96897.00000000, 29069100.00, "Martin",OperationType.SALE);
+        Offer offer3 = user1.createOffer("ETHPLN", 1.0, 6792.00000000, 2037600.00, "Enzo",OperationType.SALE);
+        Offer offer4 = user2.createOffer("APTBUSD", 5.0, 9.49470000, 27000.00, "Jose", OperationType.PURCHASE);
+        Offer offer5 = user1.createOffer("POLYXUSDT", 10.0, 0.18190000, 540.00, "Ernesto",OperationType.PURCHASE);
+        Offer offer6 = user2.createOffer("APTBTC", 25.0, 0.00049019, 3.68, "Juan", OperationType.PURCHASE);
 
-        return new ArrayList<>((Arrays.asList(transaction1, transaction2, transaction3, transaction4, transaction5, transaction6)));
+        return new ArrayList<>((Arrays.asList(offer1, offer2, offer3, offer4, offer5, offer6)));
     }
 
 }

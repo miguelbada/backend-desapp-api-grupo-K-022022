@@ -23,9 +23,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.Offer;
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model.UserModel;
+import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.services.OfferServiceImpl;
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.services.UserModelServiceImpl;
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.services.security.JwtProvider;
+import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.webServices.dto.OfferDTO;
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.webServices.dto.TokenDTO;
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.webServices.dto.UserDTO;
 import ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.webServices.dto.UserLoginDTO;
@@ -48,6 +51,9 @@ public class UserModelController {
 	
 	@Autowired
 	private UserModelServiceImpl userService;
+	
+	@Autowired
+	private OfferServiceImpl offerService;
 
 	@Autowired
 	private ModelMapper modelMapper;
@@ -102,6 +108,20 @@ public class UserModelController {
         userService.deleteUserByUsername(username);
     }
 
+	
+    @Operation(summary = "Insert the information of a new Offer to the database")
+    @PostMapping("offer/save")
+    public ResponseEntity<Offer> saveOffer(@RequestBody OfferDTO offerDTO) {
+        UserModel user = userService.getUserByUsername(offerDTO.getUsername());
+        Offer newOffer = user.createOffer(offerDTO.getCriptoActive(),
+        								  offerDTO.getCryptoactiveQuantity(),
+        								  offerDTO.getCryptoAssetsQuote(),
+        								  offerDTO.getArgentinePesos(),
+        								  offerDTO.getUsername(),
+        								  offerDTO.getType());
+        
+        return ResponseEntity.status(HttpStatus.CREATED).body(offerService.saveOffer(newOffer));
+    }
 
 	
 	private UserDTO convertUserModelEntityToUserDTO(UserModel userModel) {
