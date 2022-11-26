@@ -9,10 +9,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,15 +22,34 @@ public class CryptoServiceImpl implements CryptoService{
 
     @Override
     public List<Crypto> getBinanceCryptos() {
+        Double argentinePesos = this.getUsdExchangeRate();
         String uri = "https://www.binance.com/api/v3/ticker/price";
         RestTemplate restTemplate = new RestTemplate();
         Crypto[] prices = restTemplate.getForObject(uri, Crypto[].class);
 
-        return Arrays.stream(prices).filter(c -> this.getSimbols().contains(c.getSymbol())).collect(Collectors.toList());
+        List<Crypto> cryptos = Arrays.stream(prices).filter(c -> this.getSimbols().contains(c.getSymbol())).collect(Collectors.toList());
+
+        for (Crypto crypto : cryptos) {
+            crypto.setArgentinePesos(argentinePesos);
+        }
+
+        return cryptos;
     }
 
     @Override
-    @Scheduled(fixedRate = 6000)
+    public Double getUsdExchangeRate() {
+        String uri = "https://api.exchangerate.host/latest?base=USD&symbols=ARS";
+        RestTemplate restTemplate = new RestTemplate();
+
+        HashMap<String, HashMap<Object, Object>> response;
+
+        response = restTemplate.getForObject(uri, HashMap.class);
+
+        return (Double) response.get("rates").get("ARS");
+    }
+
+    @Override
+    //@Scheduled(fixedRate = 6000)
     public void initialiceCryptos() {
         List<Crypto> cryptos = getBinanceCryptos();
 

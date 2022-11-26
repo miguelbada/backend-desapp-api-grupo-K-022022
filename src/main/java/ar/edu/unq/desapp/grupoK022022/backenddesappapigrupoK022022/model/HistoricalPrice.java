@@ -13,7 +13,10 @@ public class HistoricalPrice {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Type(type = "uuid-char")
     private UUID id;
+
+    @Basic
     private LocalDateTime dateTime;
+
     private Double price;
 
     @ManyToOne

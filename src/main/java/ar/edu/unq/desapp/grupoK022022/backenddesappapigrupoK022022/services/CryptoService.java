@@ -7,6 +7,7 @@ import java.util.Optional;
 
 public interface CryptoService {
     List<Crypto> getBinanceCryptos();
+    Double getUsdExchangeRate();
     void initialiceCryptos();
     Crypto saveCrypto(Crypto crypto);
     List<String> getSimbols();

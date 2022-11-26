@@ -1,13 +1,11 @@
 package ar.edu.unq.desapp.grupoK022022.backenddesappapigrupoK022022.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Entity
@@ -16,6 +14,7 @@ public class Crypto {
     private String symbol;
 
     private Double price;
+    private Double argentinePesos;
     private LocalDateTime dateTime;
 
     @OneToMany(mappedBy="crypto")
@@ -41,6 +40,14 @@ public class Crypto {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public Double getArgentinePesos() {
+        return argentinePesos;
+    }
+
+    public void setArgentinePesos(Double argentinePesos) {
+        this.argentinePesos = argentinePesos;
     }
 
     public LocalDateTime getDateTime() {
